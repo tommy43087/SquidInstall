@@ -10,8 +10,6 @@ if cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 16.04"; then
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
     /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/tommy43087/SquidInstall/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 47777 -j ACCEPT
-    /sbin/iptables-save
     service squid restart
     update-rc.d squid defaults
 elif cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
@@ -21,8 +19,6 @@ elif cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
     /bin/rm -f /etc/squid3/squid.conf
     /usr/bin/touch /etc/squid3/blacklist.acl
     /usr/bin/wget --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/tommy43087/SquidInstall/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 47777 -j ACCEPT
-    /sbin/iptables-save
     service squid3 restart
     ln -s /etc/squid3 /etc/squid
     #update-rc.d squid3 defaults
